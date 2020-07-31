@@ -6,13 +6,17 @@ class RoomsController < ApplicationController
   end
 
   def create
-    
     @room = Room.new(room_params)
     if @room.save
       redirect_to root_path
     else
       render :new
     end
+  end
+  def destroy
+    room = Room.find(params[:id])
+    room.destroy
+    redirect_to root_path
   end
 
   private
